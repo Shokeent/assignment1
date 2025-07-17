@@ -1,0 +1,43 @@
+extends ../layout
+
+block content
+  .row
+    .col-md-8.mx-auto
+      h1 Add New Skill
+      
+      form(method="POST", action="/skills")
+        .mb-3
+          label.form-label(for="name") Skill Name *
+          input.form-control(type="text", name="name", id="name", required)
+        
+        .mb-3
+          label.form-label(for="category") Category *
+          select.form-select(name="category", id="category", required)
+            option(value="") Select a category
+            option(value="Frontend") Frontend
+            option(value="Backend") Backend
+            option(value="Database") Database
+            option(value="Tools") Tools
+            option(value="Languages") Languages
+            option(value="Frameworks") Frameworks
+        
+        .mb-3
+          label.form-label(for="proficiency") Proficiency Level *
+          select.form-select(name="proficiency", id="proficiency", required)
+            option(value="") Select proficiency level
+            option(value="Beginner") Beginner
+            option(value="Intermediate") Intermediate
+            option(value="Advanced") Advanced
+            option(value="Expert") Expert
+        
+        .mb-3
+          label.form-label(for="icon") Icon URL
+          input.form-control(type="url", name="icon", id="icon", placeholder="https://example.com/icon.png")
+        
+        .mb-3
+          label.form-label(for="description") Description
+          textarea.form-control(name="description", id="description", rows="3", placeholder="Optional description of your experience with this skill")
+        
+        .d-flex.gap-2
+          button.btn.btn-success(type="submit") Create Skill
+          a.btn.btn-secondary(href="/skills") Cancel

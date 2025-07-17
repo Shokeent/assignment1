@@ -1,0 +1,37 @@
+extends ../layout
+
+block content
+  .d-flex.justify-content-between.align-items-center.mb-4
+    h1 Skills
+    a.btn.btn-success(href="/skills/new") Add New Skill
+  
+  if skills.length === 0
+    .alert.alert-info
+      p No skills found. 
+      a(href="/skills/new") Add your first skill!
+  else
+    - var skillsByCategory = {}
+    each skill in skills
+      - if (!skillsByCategory[skill.category]) skillsByCategory[skill.category] = []
+      - skillsByCategory[skill.category].push(skill)
+    
+    each categorySkills, category in skillsByCategory
+      .card.mb-4
+        .card-header
+          h4.mb-0= category
+        .card-body
+          .row
+            each skill in categorySkills
+              .col-md-6.col-lg-4.mb-3
+                .card.h-100
+                  .card-body
+                    h5.card-title= skill.name
+                    p.card-text
+                      span.badge.bg-info.me-2= skill.proficiency
+                      if skill.description
+                        br
+                        small.text-muted= skill.description
+                    .d-flex.gap-2
+                      a.btn.btn-sm.btn-warning(href=`/skills/edit/${skill._id}`) Edit
+                      form(method="POST", action=`/skills/delete/${skill._id}`, style="display: inline;")
+                        button.btn.btn-sm.btn-danger(type="submit", onclick="return confirm('Are you sure you want to delete this skill?')") Delete

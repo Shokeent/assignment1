@@ -1,0 +1,51 @@
+extends layout
+
+block content
+  .row
+    .col-md-12
+      h1.display-4.text-center.mb-4 Portfolio Admin Dashboard
+      
+  .row
+    .col-md-6
+      .card.mb-4
+        .card-body
+          h5.card-title
+            i.fas.fa-project-diagram.me-2
+            | Projects
+          p.card-text Manage your portfolio projects, add new ones, and showcase your work.
+          .d-flex.gap-2
+            a.btn.btn-primary(href="/projects") View Projects
+            a.btn.btn-success(href="/projects/new") Add New Project
+    
+    .col-md-6
+      .card.mb-4
+        .card-body
+          h5.card-title
+            i.fas.fa-tools.me-2
+            | Skills
+          p.card-text Organize your technical skills and proficiency levels.
+          .d-flex.gap-2
+            a.btn.btn-primary(href="/skills") View Skills
+            a.btn.btn-success(href="/skills/new") Add New Skill
+  
+  .row
+    .col-md-12
+      .card.bg-light
+        .card-body
+          h5.card-title
+            i.fas.fa-code.me-2
+            | API Endpoints
+          p.card-text Access your data through these JSON API endpoints:
+          ul.list-group.list-group-flush
+            li.list-group-item
+              strong GET /api/projects
+              span.text-muted.ms-2 - Get all projects
+              a.btn.btn-sm.btn-outline-primary.ms-2(href="/api/projects", target="_blank") Test
+            li.list-group-item
+              strong GET /api/skills
+              span.text-muted.ms-2 - Get all skills
+              a.btn.btn-sm.btn-outline-primary.ms-2(href="/api/skills", target="_blank") Test
+            li.list-group-item
+              strong GET /api/projects/featured
+              span.text-muted.ms-2 - Get featured projects only
+              a.btn.btn-sm.btn-outline-primary.ms-2(href="/api/projects/featured", target="_blank") Test

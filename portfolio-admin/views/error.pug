@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  .row
+    .col-md-8.mx-auto.text-center
+      .alert.alert-danger
+        h2 Oops! Something went wrong
+        p.lead= error
+        a.btn.btn-primary(href="/") Go Home

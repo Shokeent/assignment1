@@ -1,0 +1,40 @@
+extends ../layout
+
+block content
+  .row
+    .col-md-8.mx-auto
+      h1 Add New Project
+      
+      form(method="POST", action="/projects")
+        .mb-3
+          label.form-label(for="title") Project Title *
+          input.form-control(type="text", name="title", id="title", required)
+        
+        .mb-3
+          label.form-label(for="description") Description *
+          textarea.form-control(name="description", id="description", rows="4", required)
+        
+        .mb-3
+          label.form-label(for="technologies") Technologies *
+          input.form-control(type="text", name="technologies", id="technologies", placeholder="React, Node.js, MongoDB (comma-separated)", required)
+          .form-text Enter technologies separated by commas
+        
+        .mb-3
+          label.form-label(for="githubUrl") GitHub URL
+          input.form-control(type="url", name="githubUrl", id="githubUrl", placeholder="https://github.com/username/project")
+        
+        .mb-3
+          label.form-label(for="liveUrl") Live Demo URL
+          input.form-control(type="url", name="liveUrl", id="liveUrl", placeholder="https://your-project.com")
+        
+        .mb-3
+          label.form-label(for="image") Project Image URL
+          input.form-control(type="url", name="image", id="image", placeholder="https://example.com/image.jpg")
+        
+        .mb-3.form-check
+          input.form-check-input(type="checkbox", name="featured", id="featured")
+          label.form-check-label(for="featured") Featured Project
+        
+        .d-flex.gap-2
+          button.btn.btn-success(type="submit") Create Project
+          a.btn.btn-secondary(href="/projects") Cancel

@@ -1,0 +1,41 @@
+extends ../layout
+
+block content
+  .row
+    .col-md-8.mx-auto
+      h1 Edit Skill
+      
+      form(method="POST", action=`/skills/edit/${skill._id}`)
+        .mb-3
+          label.form-label(for="name") Skill Name *
+          input.form-control(type="text", name="name", id="name", value=skill.name, required)
+        
+        .mb-3
+          label.form-label(for="category") Category *
+          select.form-select(name="category", id="category", required)
+            option(value="Frontend", selected=(skill.category === 'Frontend')) Frontend
+            option(value="Backend", selected=(skill.category === 'Backend')) Backend
+            option(value="Database", selected=(skill.category === 'Database')) Database
+            option(value="Tools", selected=(skill.category === 'Tools')) Tools
+            option(value="Languages", selected=(skill.category === 'Languages')) Languages
+            option(value="Frameworks", selected=(skill.category === 'Frameworks')) Frameworks
+        
+        .mb-3
+          label.form-label(for="proficiency") Proficiency Level *
+          select.form-select(name="proficiency", id="proficiency", required)
+            option(value="Beginner", selected=(skill.proficiency === 'Beginner')) Beginner
+            option(value="Intermediate", selected=(skill.proficiency === 'Intermediate')) Intermediate
+            option(value="Advanced", selected=(skill.proficiency === 'Advanced')) Advanced
+            option(value="Expert", selected=(skill.proficiency === 'Expert')) Expert
+        
+        .mb-3
+          label.form-label(for="icon") Icon URL
+          input.form-control(type="url", name="icon", id="icon", value=skill.icon)
+        
+        .mb-3
+          label.form-label(for="description") Description
+          textarea.form-control(name="description", id="description", rows="3")= skill.description
+        
+        .d-flex.gap-2
+          button.btn.btn-warning(type="submit") Update Skill
+          a.btn.btn-secondary(href="/skills") Cancel
